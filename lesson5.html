@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="root">
+		<h1>All Tasks</h1>
+		<ul>
+			<li v-for="task in tasks" v-text="task.com"></li>
+		</ul>
+		<h1>Complete Tasks</h1>
+		<ul>
+			<li v-for="task in filteredDone" v-text="task.com"></li>
+		</ul>
+		<h1>incomplete Tasks</h1>
+		<ul>
+			<li v-for="task in filteredUndone" v-text="task.com"></li>
+		</ul>
+	</div>
+</body>
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+<script>
+	var app=new Vue({
+		el:"#root",
+		data:{
+			tasks:[
+			       {com:"hospilab software",state:true},
+			       {com:"vue Learn",state:false},
+			       {com:"laravel run",state:true},
+			       {com:"time to eat",state:false},
+			       {com:"go for walk",state:false},
+			       {com:"watching footbALL",state:false}
+			       ]
+		},
+		computed:{
+			filteredDone(){
+				return this.tasks.filter(task=> task.state);
+			},
+			filteredUndone(){
+				return this.tasks.filter(task=> !task.state);
+			}
+		}
+	})
+</script>
+</html>
